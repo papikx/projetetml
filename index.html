@@ -1,0 +1,112 @@
+<!--
+********************************************************
+ Copyright (c) 2026 Musab Sarier & Herman Bilokonenko.
+ All rights reserved.
+********************************************************
+-->
+
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>Quiz ETML - Gagnez des produits !</title>
+    <script src="assets/js/kiosk.js"></script>
+    <link rel="icon" type="image/x-icon" href="assets/image/logo.jfif">
+    <link rel="stylesheet" href="assets/css/html.css?v=1.1">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#001e4d">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="ETML Games">
+</head>
+
+<body>
+    <div id="vanta-bg"></div>
+
+    <!-- Bouton Admin -->
+    <a href="html/login.html" class="admin-link">Admin</a>
+
+    <div class="quiz">
+        <img src="assets/image/logo.png" alt="logo">
+        <h1 id="game-title">QUIZ ETML</h1>
+
+        <!-- Bouton Jeux (Déplacé ici) -->
+        <button class="btn" id="games-btn" style="margin: 10px 0 20px 0; width: 100%; text-align: center;"
+            onclick="window.location.href='game/game_menu.html'">Jeux</button>
+
+        <!-- Sélection des Produits -->
+        <div id="product-selection">
+            <!-- La liste est générée par JS -->
+            <div id="product-list"></div>
+        </div>
+
+        <!-- Interface du Quiz (cachée par défaut) -->
+        <div id="quiz-interface" style="display: none;">
+            <div class="questions">
+                <h2 id="question">Questions here</h2>
+                <div id="answer-buttons">
+
+                </div>
+                <button id="next-btn">Suivant</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts pour l'animation de fond -->
+    <script src="assets/js/three.r134.min.js"></script>
+    <script src="assets/js/vanta.net.min.js"></script>
+    <script>
+        VANTA.NET({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x011fac,
+            backgroundColor: 0x3c,
+            points: 16,
+            maxDistance: 20,
+            spacing: 17
+        })  
+    </script>
+
+    <div class="site-credit">
+        <span class="site-credit-prefix">© 2026 Created by team ETML Préapprentissage</span>
+        <button id="credits-open" class="site-credit-link" type="button">Credits</button>
+    </div>
+
+    <div id="credits-modal" class="credits-modal" aria-hidden="true">
+        <div class="credits-dialog" role="dialog" aria-modal="true" aria-label="Website Credits">
+            <h2>Website Credits</h2>
+            <a class="btn credits-person" href="https://github.com/levi-ckrr" target="_blank"
+                rel="noopener noreferrer">Musab Sarier (levi-ckrr)</a>
+            <a class="btn credits-person" href="https://github.com/papikx" target="_blank"
+                rel="noopener noreferrer">Herman Bilokonenko (papikx)</a>
+            <a class="btn credits-person" href="https://github.com/rrr0m1" target="_blank"
+                rel="noopener noreferrer">Romain Vigneron (rrr0m1)</a>
+            <button class="btn credits-close" id="credits-close" type="button">Close</button>
+        </div>
+    </div>
+
+    <!-- Scripts de logique -->
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('Service Worker registered', reg))
+                    .catch(err => console.log('Service Worker registration failed', err));
+            });
+        }
+    </script>
+</body>
+
+</html>

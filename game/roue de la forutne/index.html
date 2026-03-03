@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>Roue de la Fortune</title>
+    <link rel="icon" type="image/" href="../../assets/image/roulette.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Outfit:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div id="vanta-bg"></div>
+    <div class="main-container">
+        <div class="etml-logo">
+            <span class="letter">E</span><span class="letter">T</span><span class="letter">M</span><span
+                class="letter">L</span>
+            <div class="sub-text">LAUSANNE</div>
+        </div>
+        <div class="wheel-container">
+            <div class="pointer"></div>
+            <div class="wheel" id="wheel"></div>
+        </div>
+        <button id="spinBtn">Lancer la roue</button>
+        <button id="adminBtn" class="admin-btn"> Admin</button>
+        <button id="menuBtn" class="menu-btn" onclick="window.location.href='../game_menu.html'">Retour au menu</button>
+
+        <div id="adminPanel" class="admin-panel hidden">
+            <h3>Modifier les lots</h3>
+            <div id="prizesListContainer" class="prizes-list-container">
+                <!-- Les entrées dynamiques seront ici -->
+            </div>
+            <button id="addPrizeBtn" class="add-btn">+ Ajouter un lot</button>
+            <div class="admin-controls">
+                <button id="saveBtn" class="save-btn">Sauvegarder</button>
+                <button id="cancelBtn" class="cancel-btn">Annuler</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="../../assets/js/three.r134.min.js"></script>
+    <script src="../../assets/js/vanta.net.min.js"></script>
+    <script>
+        VANTA.NET({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x011fac,
+            backgroundColor: 0x3c,
+            points: 16,
+            maxDistance: 20,
+            spacing: 17
+        })
+    </script>
+</body>
+
+</html>

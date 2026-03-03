@@ -1,0 +1,55 @@
+{
+    "name": "etml",
+    "productName": "ETML",
+    "version": "1.0.0",
+    "description": "ETML Games Desktop Application",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "dist": "electron-builder",
+        "dist:portable": "electron-builder --win portable",
+        "dist:setup": "electron-builder --win nsis"
+    },
+    "author": "Antigravity",
+    "license": "ISC",
+    "devDependencies": {
+        "electron": "^34.5.8",
+        "electron-builder": "^25.1.8",
+        "electron-packager": "^17.1.2",
+        "jimp": "^1.6.0",
+        "png-to-ico": "^3.0.1"
+    },
+    "build": {
+        "appId": "com.etml.prod.v1",
+        "win": {
+            "target": [
+                {
+                    "target": "nsis",
+                    "arch": [
+                        "x64"
+                    ]
+                },
+                {
+                    "target": "portable",
+                    "arch": [
+                        "x64"
+                    ]
+                }
+            ],
+            "icon": "assets/image/app_icon.ico"
+        },
+        "nsis": {
+            "oneClick": false,
+            "allowToChangeInstallationDirectory": true,
+            "shortcutName": "ETML Games",
+            "installerIcon": "assets/image/app_icon.ico",
+            "artifactName": "${productName}-Setup-${version}.exe"
+        },
+        "portable": {
+            "artifactName": "${productName}-Portable-${version}.exe"
+        },
+        "directories": {
+            "output": "dist"
+        }
+    }
+}

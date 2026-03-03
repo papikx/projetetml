@@ -1,0 +1,273 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: monospace, sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    line-height: 1.6;
+    position: relative;
+    color: white;
+    overflow: hidden;
+}
+
+#vanta-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    /* Allows clicking through if needed, though mouseControls: true might need events */
+}
+
+
+
+.quiz {
+    background: hsl(0, 0%, 100%, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: inset 0 0 8px 1px hsl(0, 0%, 100%, 0.15);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    width: 95vw;
+    max-width: 650px;
+    margin: 20px auto;
+    border-radius: 24px;
+    padding: clamp(20px, 5vw, 40px);
+    position: relative;
+    z-index: 10;
+}
+
+.quiz h1 {
+    font-size: 25px;
+    font-family: monospace;
+    color: #c4b6c7;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 30px;
+}
+
+.quiz {
+    padding: 40px 10px;
+}
+
+.quiz h2 {
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.btn {
+    background: #001e4d;
+    color: #fff;
+    font-weight: 500;
+    width: 100%;
+    border: 1px solid #000000;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: left;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn:hover:not([disabled]) {
+    background: #001e4d;
+    color: #fff;
+}
+
+.btn:disabled {
+    cursor: no-drop;
+}
+
+#next-btn {
+    background: #001e4d;
+    color: #fff;
+    font-weight: 500;
+    width: 200px;
+    border: 0;
+    padding: 10px;
+    margin: 20px auto 0;
+    border-radius: 4px;
+    cursor: pointer;
+    display: none;
+    text-align: center;
+}
+
+.correct {
+    background: #9aeabc !important;
+    color: #000;
+}
+
+.incorrect {
+    background: #ff9393 !important;
+    color: #000;
+}
+
+/* Styles pour la sélection des produits */
+.product-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    text-align: center;
+}
+
+.product-card:hover {
+    transform: scale(1.02);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.product-card h3 {
+    margin-bottom: 5px;
+}
+
+.product-card,
+.product-card h3,
+.product-card p {
+    color: #ffffff;
+}
+
+/* Bouton Admin */
+.admin-link {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8em;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.admin-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+#product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Footer watermark / credits */
+.site-credit {
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: hsl(0 0% 100% / 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 20;
+    box-shadow: inset 0 0 8px 1px rgba(255, 255, 255, 0.12), 0 10px 26px rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(12px) saturate(1.2);
+    -webkit-backdrop-filter: blur(12px) saturate(1.2);
+}
+
+.site-credit-prefix {
+    white-space: nowrap;
+}
+
+.site-credit-link {
+    background: transparent;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    padding: 4px 10px;
+    font-size: 11px;
+    color: #ffffff;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.site-credit-link:hover {
+    background: rgba(32, 64, 152, 0.95);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.45);
+    transform: translateY(-1px);
+}
+
+.credits-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    z-index: 40;
+}
+
+.credits-modal.open {
+    display: flex;
+}
+
+.credits-dialog {
+    background: rgba(9, 44, 118, 0.92);
+    border-radius: 18px;
+    padding: 22px 24px 18px;
+    width: min(360px, 92vw);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.credits-dialog h2 {
+    margin-bottom: 16px;
+    font-size: 18px;
+}
+
+.credits-dialog .credits-person {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 44px;
+    margin-top: 12px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.credits-dialog .credits-person:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.credits-dialog .credits-close {
+    width: 110px;
+    height: 34px;
+    margin: 16px auto 0;
+    text-align: center;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+}
